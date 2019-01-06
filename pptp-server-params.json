@@ -13,7 +13,7 @@
     },
     {
         "ParameterKey": "InstanceSize",
-        "ParameterValue": "t2.micro"
+        "ParameterValue": "Standard.VPN-t2.micro"
     },
     {
         "ParameterKey": "DNSServerPrimary",

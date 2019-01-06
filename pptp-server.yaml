@@ -26,11 +26,11 @@ Parameters:
   InstanceSize:
     Description: Instance Type
     Type: String
-    Default: t2.micro
+    Default: Standard.VPN-t2.micro
     AllowedValues:
-    - t2.micro
-    - t2.medium
-    - m3.xlarge
+    - Standard.VPN-t2.micro
+    - High.Speed.VPN-t2.medium
+    - Ultra.High.Speed.VPN-m3.xlarge
   DNSServerPrimary:
     Description: IPv4 Address for DNS server primary
     Type: String
@@ -45,6 +45,13 @@ Parameters:
     Default: '1.0.0.1'
 
 Mappings:
+  AWSInstanceType2Arch:
+    Standard.VPN-t2.micro:
+      InstanceType: t2.micro
+    High.Speed.VPN-t2.medium:
+      InstanceType: t2.medium
+    Ultra.High.Speed.VPN-m3.xlarge:
+      InstanceType: m3.xlarge
   AWSRegionArch2AMI:
     us-east-1:
       HVM64: ami-80861296
@@ -87,7 +94,10 @@ Resources:
           - Ref: AWS::Region
           - HVM64
       InstanceType:
-        - Ref: InstanceSize
+        Fn::FindInMap:
+          - AWSInstanceType2Arch
+          - Ref: InstanceSize
+          - InstanceType
       SecurityGroups:
         - Ref: VPNSecurityGroup
       Tags:

@@ -32,6 +32,15 @@ aws cloudformation create-stack --stack-name "pptp-vpn" \
 
 **Note:** The `--region` parameter is used to define which region the VPN should be deployed to.
 
+Get details:
+
+```bash
+aws cloudformation describe-stacks --stack-name "pptp-vpn" \
+    --region us-east-1 \
+    --query 'Stacks[0].Outputs[1].OutputValue' \
+    --output text
+```
+
 ## Attribution
 
 This configuration is based on the work done by [webdigi](https://github.com/webdigi) who's work can be founds below:
