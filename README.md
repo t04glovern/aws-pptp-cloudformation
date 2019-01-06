@@ -2,6 +2,8 @@
 
 Deploying a Private VPN to AWS EC2 using CloudFormation
 
+[![https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=pptp-vpn&templateURL=https://s3.amazonaws.com/devopstar/resources/aws-pptp-cloudformation/pptp-server.yaml)
+
 ## Quickstart
 
 Make the neccessary changes to the `pptp-server-params.json` file, being sure to define new username & password parameters
@@ -32,12 +34,12 @@ aws cloudformation create-stack --stack-name "pptp-vpn" \
 
 **Note:** The `--region` parameter is used to define which region the VPN should be deployed to.
 
-Get details:
+Get details, including the Server address for your VPN:
 
 ```bash
 aws cloudformation describe-stacks --stack-name "pptp-vpn" \
     --region us-east-1 \
-    --query 'Stacks[0].Outputs[1].OutputValue' \
+    --query 'Stacks[0].Outputs[?OutputKey==`VPNServerAddress`].OutputValue' \
     --output text
 ```
 
