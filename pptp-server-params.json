@@ -1,0 +1,26 @@
+[
+    {
+        "ParameterKey": "VPNUsername",
+        "ParameterValue": "nathan"
+    },
+    {
+        "ParameterKey": "VPNPassword",
+        "ParameterValue": "passw0rd1"
+    },
+    {
+        "ParameterKey": "VPNPhrase",
+        "ParameterValue": "passw0rd1"
+    },
+    {
+        "ParameterKey": "InstanceSize",
+        "ParameterValue": "Standard.VPN-t2.micro"
+    },
+    {
+        "ParameterKey": "DNSServerPrimary",
+        "ParameterValue": "1.1.1.1"
+    },
+    {
+        "ParameterKey": "DNSServerSecondary",
+        "ParameterValue": "1.0.0.1"
+    }
+]
